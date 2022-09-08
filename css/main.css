@@ -638,8 +638,17 @@ a:focus {
   color: black;
 }
 
+.header__navigation-link:hover {
+  text-decoration: underline;
+}
+
 .header__navigation-link.hot {
   color: #a869ff !important;
+}
+
+.header__navigation-link.hot:hover {
+  text-decoration: none;
+  color: black !important;
 }
 
 .header__navigation-link.hot::after,
