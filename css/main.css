@@ -576,6 +576,21 @@ a:focus {
   background: transparent;
 }
 
+.header.fixed {
+  position: fixed;
+  top: 0;
+}
+
+.header:hover,
+.header.fixed {
+  background: white;
+}
+
+.header:hover svg,
+.header.fixed svg {
+  fill: black;
+}
+
 .header svg {
   fill: white;
 }
@@ -618,8 +633,13 @@ a:focus {
   position: relative;
 }
 
+.header:hover .header__navigation-link,
+.header.fixed .header__navigation-link {
+  color: black;
+}
+
 .header__navigation-link.hot {
-  color: #a869ff;
+  color: #a869ff !important;
 }
 
 .header__navigation-link.hot::after,
@@ -666,6 +686,11 @@ a:focus {
   margin: 0 12px;
 }
 
+.header:hover .header__menu form,
+.header.fixed .header__menu form {
+  border-color: black;
+}
+
 .header__menu form input[type=submit] {
   background: url(https://cdn.shopify.com/s/files/1/0580/4903/6345/files/my_search-white.svg?v=1657699731);
   background-repeat: no-repeat;
@@ -673,6 +698,12 @@ a:focus {
   height: 17px;
   border: none;
   margin-left: 11px;
+}
+
+.header:hover .header__menu form input[type=submit],
+.header.fixed .header__menu form input[type=submit] {
+  background: url(https://cdn.shopify.com/s/files/1/0580/4903/6345/files/my_search.svg?v=1657699683);
+  background-repeat: no-repeat;
 }
 
 .header__menu form input.header__search {
@@ -691,29 +722,64 @@ a:focus {
   transition: width 0.5s ease;
 }
 
+.header:hover .header__menu form input.header__search,
+.header.fixed .header__menu form input.header__search {
+  color: black;
+}
+
 .header__menu form input.header__search::-webkit-input-placeholder {
+  font: 10px "AvantGardeGothicBook", sans-serif;
   color: white;
-  font-size: 10px;
+  letter-spacing: 1px;
 }
 
 .header__menu form input.header__search::-moz-placeholder {
+  font: 10px "AvantGardeGothicBook", sans-serif;
   color: white;
-  font-size: 10px;
+  letter-spacing: 1px;
 }
 
 .header__menu form input.header__search:-ms-input-placeholder {
+  font: 10px "AvantGardeGothicBook", sans-serif;
   color: white;
-  font-size: 10px;
+  letter-spacing: 1px;
 }
 
 .header__menu form input.header__search::-ms-input-placeholder {
+  font: 10px "AvantGardeGothicBook", sans-serif;
   color: white;
-  font-size: 10px;
+  letter-spacing: 1px;
 }
 
 .header__menu form input.header__search::placeholder {
+  font: 10px "AvantGardeGothicBook", sans-serif;
   color: white;
-  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.header:hover .header__menu form input.header__search::-webkit-input-placeholder,
+.header.fixed .header__menu form input.header__search::-webkit-input-placeholder {
+  color: black;
+}
+
+.header:hover .header__menu form input.header__search::-moz-placeholder,
+.header.fixed .header__menu form input.header__search::-moz-placeholder {
+  color: black;
+}
+
+.header:hover .header__menu form input.header__search:-ms-input-placeholder,
+.header.fixed .header__menu form input.header__search:-ms-input-placeholder {
+  color: black;
+}
+
+.header:hover .header__menu form input.header__search::-ms-input-placeholder,
+.header.fixed .header__menu form input.header__search::-ms-input-placeholder {
+  color: black;
+}
+
+.header:hover .header__menu form input.header__search::placeholder,
+.header.fixed .header__menu form input.header__search::placeholder {
+  color: black;
 }
 
 .header__menu form .cross {
@@ -726,6 +792,11 @@ a:focus {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+.header:hover .header__menu form .cross,
+.header.fixed .header__menu form .cross {
+  background: url(https://cdn.shopify.com/s/files/1/0580/4903/6345/files/icon-close.svg?v=1657865235) no-repeat center center;
+}
+
 .header__menu > div {
   padding: 0 12px;
 }
@@ -735,8 +806,19 @@ a:focus {
   height: 18px;
 }
 
+.header__like {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+}
+
 .header__like svg {
   stroke: white;
+  fill: transparent;
+}
+
+.header:hover .header__like svg,
+.header.fixed .header__like svg {
+  stroke: black;
   fill: transparent;
 }
 
@@ -746,6 +828,11 @@ a:focus {
   margin-left: 12px;
   padding: 0 !important;
   display: none;
+}
+
+.header:hover .header__burger .picto-menu-responsive span,
+.header.fixed .header__burger .picto-menu-responsive span {
+  background: black;
 }
 
 .announce__bar {
@@ -888,7 +975,7 @@ a:focus {
 .banner__info-suptitle {
   color: #f8ff01;
   margin-bottom: -0.14vw;
-  font-family: pidaras, sans-serif;
+  font-family: forma-djr-deck, sans-serif;
 }
 
 .banner__info-subtitle-wrapper {
@@ -904,13 +991,18 @@ a:focus {
   background: white;
   border-radius: 30px;
   border: 1px solid black;
-  padding: 5.5px 12px;
+  padding: 7.5px 12px;
   position: absolute;
   top: 50%;
   left: 0;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
+}
+
+.banner__info-subtitle:hover {
+  color: #ffffff !important;
+  background: #000000 !important;
 }
 
 .banner .video__btn {

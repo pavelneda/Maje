@@ -39,6 +39,7 @@ document.documentElement.style.setProperty('--vh', `${vh}px`);
 (function init100vh() {
 	function setHeight() {
 		var vh = window.innerHeight * 0.01;
+		if (vh < 4) vh = 4;
 		document.documentElement.style.setProperty('--vh', `${vh}px`);
 		bannerHeight();
 	}
@@ -55,9 +56,25 @@ videoBtn.addEventListener('click', function () {
 	const video = this.closest('.swiper-slide').querySelector('video');
 	if (video.muted) {
 		video.muted = false;
-	}else{
+	} else {
 		video.muted = true;
 	}
 })
 
 
+let clearSearchBtn = document.querySelectorAll('.cross');
+clearSearchBtn.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+        return btn.previousElementSibling.value = '';
+    });
+});
+
+window.addEventListener('scroll', function () {
+    const header = document.querySelector('.header');
+    const y = document.querySelector('.announce__bar').offsetHeight;
+    if(pageYOffset > y){
+        header.classList.add('fixed');
+    }else{
+        header.classList.remove('fixed');
+    }
+});
