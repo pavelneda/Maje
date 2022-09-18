@@ -76,7 +76,6 @@ const quesionsWrapper = document.querySelector('.help__quesions');
 if (new URL(window.location.href).pathname === '/Maje/faq.html' || new URL(window.location.href).pathname === '/faq.html') {
     const selectCategory = helpAnswers.querySelector('select');
     const quesionsData = JSON.parse(document.querySelector('[type="application/json"]').textContent);
-    alert(quesionsData)
 
     categories.forEach(category => {
         category.addEventListener('click', function () {
@@ -173,6 +172,8 @@ if (new URL(window.location.href).pathname === '/Maje/faq.html' || new URL(windo
                 </div>`;
                     innerHTML += item;
                 });
+                alert(quesionsWrapper)
+                alert(innerHTML)
                 quesionsWrapper.innerHTML = innerHTML;
             }
         });
