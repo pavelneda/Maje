@@ -155,6 +155,7 @@ if (new URL(window.location.href).pathname === '/Maje/faq.html' || new URL(windo
 
         mainFaqCategory.innerHTML = categoryName;
         mainFaqCategory.classList.add('active');
+        alert('2')
 
         quesionsData.forEach(el => {
             if (el.category === categoryName) {
@@ -171,9 +172,9 @@ if (new URL(window.location.href).pathname === '/Maje/faq.html' || new URL(windo
                 </div>
                 </div>`;
                     innerHTML += item;
+                    alert('0')
                 });
-                alert(quesionsWrapper)
-                alert(innerHTML)
+                alert('3')
                 quesionsWrapper.innerHTML = innerHTML;
             }
         });
