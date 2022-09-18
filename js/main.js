@@ -73,9 +73,10 @@ const mainFaqCategory = document.querySelector('#main__faq-category');
 const mainFaqQuesion = document.querySelector('#main__faq-quesion');
 const quesionsWrapper = document.querySelector('.help__quesions');
 
-if (new URL(window.location.href).pathname === '/Maje/faq.html') {
+if (new URL(window.location.href).pathname === '/Maje/faq.html' || new URL(window.location.href).pathname === '/faq.html') {
     const selectCategory = helpAnswers.querySelector('select');
     const quesionsData = JSON.parse(document.querySelector('[type="application/json"]').textContent);
+    alert(quesionsData)
 
     categories.forEach(category => {
         category.addEventListener('click', function () {
@@ -120,7 +121,7 @@ if (new URL(window.location.href).pathname === '/Maje/faq.html') {
 
 
 
-    /*function initQuesions() {
+    function initQuesions() {
         const quesions = document.querySelectorAll('.help__quesions-item');
         quesions.forEach(quesion => {
             quesion.addEventListener('click', function () {
@@ -138,7 +139,7 @@ if (new URL(window.location.href).pathname === '/Maje/faq.html') {
                 mainFaqQuesion.classList.toggle('active');
             })
         });
-    }*/
+    }
 
     function chooseCategory(categoryName) {
         mainFaqQuesion.classList.remove('active');
@@ -172,10 +173,10 @@ if (new URL(window.location.href).pathname === '/Maje/faq.html') {
                 </div>`;
                     innerHTML += item;
                 });
-                document.querySelector('.help__quesions').innerHTML = innerHTML;
+                quesionsWrapper.innerHTML = innerHTML;
             }
         });
-        //initQuesions();
+        initQuesions();
         selectCategory.value = categoryName;
         sessionStorage.setItem('category', categoryName);
     }
