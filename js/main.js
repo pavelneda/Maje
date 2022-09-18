@@ -73,94 +73,92 @@ const mainFaqCategory = document.querySelector('#main__faq-category');
 const mainFaqQuesion = document.querySelector('#main__faq-quesion');
 const quesionsWrapper = document.querySelector('.help__quesions');
 
-const selectCategory = helpAnswers.querySelector('select');
-const quesionsData = JSON.parse(document.querySelector('[type="application/json"]').textContent);
+function initFaq() {
+    const selectCategory = helpAnswers.querySelector('select');
+    const quesionsData = JSON.parse(document.querySelector('[type="application/json"]').textContent);
 
-categories.forEach(category => {
-    category.addEventListener('click', function () {
-        sessionStorage.removeItem('quesion');
-        chooseCategory(this.dataset.name);
-    })
-});
-
-
-mainFaq.addEventListener('click', function () {
-    categoriesWrapper.classList.remove('hide');
-    helpTitle.classList.remove('hide');
-    helpText.classList.remove('hide');
-    helpAnswers.classList.remove('active')
-
-    mainFaqQuesion.classList.remove('active');
-    mainFaqCategory.classList.remove('active');
-    sessionStorage.removeItem('category');
-    sessionStorage.removeItem('quesion');
-})
-
-mainFaqCategory.addEventListener('click', function () {
-    let active = helpAnswers.querySelector('.help__quesions-item.active');
-    if (active) active.click();
-})
-
-
-selectCategory.addEventListener('change', function () {
-    helpAnswers.querySelector(`[data-name="${this.value}"]`).click();
-})
-
-if (sessionStorage.getItem('category')) {
-    chooseCategory(sessionStorage.getItem('category'));
-    if (sessionStorage.getItem('quesion')) {
-        const quesion = helpQuesions.querySelector(`[data-name="${sessionStorage.getItem('quesion')}"]`);
-        quesion.classList.add('active');
-        mainFaqQuesion.innerHTML = quesion.dataset.name;
-        mainFaqQuesion.classList.toggle('active');
-    }
-}
-
-
-
-
-function initQuesions() {
-    const quesions = document.querySelectorAll('.help__quesions-item');
-    quesions.forEach(quesion => {
-        quesion.addEventListener('click', function () {
-            const oldActive = helpAnswers.querySelector('.help__quesions-item.active');
-            sessionStorage.setItem('quesion', quesion.dataset.name)
-            if (oldActive && oldActive !== this) {
-                oldActive.classList.remove('active');
-                mainFaqQuesion.classList.remove('active');
-            }
-            if (oldActive === this) {
-                sessionStorage.removeItem('quesion');
-            }
-            this.classList.toggle('active');
-            mainFaqQuesion.innerHTML = quesion.dataset.name;
-            mainFaqQuesion.classList.toggle('active');
+    categories.forEach(category => {
+        category.addEventListener('click', function () {
+            sessionStorage.removeItem('quesion');
+            chooseCategory(this.dataset.name);
         })
     });
-}
 
-function chooseCategory(categoryName) {
-    mainFaqQuesion.classList.remove('active');
 
-    if (helpAnswers.querySelector('.help__categories-item.active'))
-        helpAnswers.querySelector('.help__categories-item.active').classList.remove('active');
-    helpAnswers.querySelector(`[data-name="${categoryName}"]`).classList.add('active');
+    mainFaq.addEventListener('click', function () {
+        categoriesWrapper.classList.remove('hide');
+        helpTitle.classList.remove('hide');
+        helpText.classList.remove('hide');
+        helpAnswers.classList.remove('active')
 
-    categoriesWrapper.classList.add('hide');
-    helpTitle.classList.add('hide');
-    helpText.classList.add('hide');
+        mainFaqQuesion.classList.remove('active');
+        mainFaqCategory.classList.remove('active');
+        sessionStorage.removeItem('category');
+        sessionStorage.removeItem('quesion');
+    })
 
-    helpAnswers.classList.add('active')
+    mainFaqCategory.addEventListener('click', function () {
+        let active = helpAnswers.querySelector('.help__quesions-item.active');
+        if (active) active.click();
+    })
 
-    mainFaqCategory.innerHTML = categoryName;
-    mainFaqCategory.classList.add('active');
-    alert('2')
 
-    quesionsData.forEach(el => {
-        if (el.category === categoryName) {
-            let innerHTML = '';
-            el.quesions.forEach(quesion => {
-                let item = `<div class="help__quesions-item" data-name="${quesion.name}">
+    selectCategory.addEventListener('change', function () {
+        helpAnswers.querySelector(`[data-name="${this.value}"]`).click();
+    })
+
+    if (sessionStorage.getItem('category')) {
+        chooseCategory(sessionStorage.getItem('category'));
+        if (sessionStorage.getItem('quesion')) {
+            const quesion = helpQuesions.querySelector(`[data-name="${sessionStorage.getItem('quesion')}"]`);
+            quesion.classList.add('active');
+            mainFaqQuesion.innerHTML = quesion.dataset.name;
+            mainFaqQuesion.classList.toggle('active');
+        }
+    }
+
+
+    function initQuesions() {
+        const quesions = document.querySelectorAll('.help__quesions-item');
+        quesions.forEach(quesion => {
+            quesion.addEventListener('click', function () {
+                const oldActive = helpAnswers.querySelector('.help__quesions-item.active');
+                sessionStorage.setItem('quesion', quesion.dataset.name)
+                if (oldActive && oldActive !== this) {
+                    oldActive.classList.remove('active');
+                    mainFaqQuesion.classList.remove('active');
+                }
+                if (oldActive === this) {
+                    sessionStorage.removeItem('quesion');
+                }
+                this.classList.toggle('active');
+                mainFaqQuesion.innerHTML = quesion.dataset.name;
+                mainFaqQuesion.classList.toggle('active');
+            })
+        });
+    }
+
+    function chooseCategory(categoryName) {
+        mainFaqQuesion.classList.remove('active');
+
+        if (helpAnswers.querySelector('.help__categories-item.active'))
+            helpAnswers.querySelector('.help__categories-item.active').classList.remove('active');
+        helpAnswers.querySelector(`[data-name="${categoryName}"]`).classList.add('active');
+
+        categoriesWrapper.classList.add('hide');
+        helpTitle.classList.add('hide');
+        helpText.classList.add('hide');
+
+        helpAnswers.classList.add('active')
+
+        mainFaqCategory.innerHTML = categoryName;
+        mainFaqCategory.classList.add('active');
+
+        quesionsData.forEach(el => {
+            if (el.category === categoryName) {
+                let innerHTML = '';
+                el.quesions.forEach(quesion => {
+                    let item = `<div class="help__quesions-item" data-name="${quesion.name}">
                 <div class="help__quesions-name">
                     ${quesion.name}
                     <span class="plus icon">+</span>
@@ -170,19 +168,17 @@ function chooseCategory(categoryName) {
                     ${quesion.answer}
                 </div>
                 </div>`;
-                innerHTML += item;
-                alert('0')
-            });
-            alert('3')
-            quesionsWrapper.innerHTML = innerHTML;
-        }
-    });
-    initQuesions();
-    selectCategory.value = categoryName;
-    sessionStorage.setItem('category', categoryName);
+                    innerHTML += item;
+                });
+                quesionsWrapper.innerHTML = innerHTML;
+            }
+        });
+        initQuesions();
+        selectCategory.value = categoryName;
+        sessionStorage.setItem('category', categoryName);
+    }
+
 }
-
-
 let clearSearchBtn = document.querySelectorAll('.cross');
 clearSearchBtn.forEach(function (btn) {
     btn.addEventListener('click', function () {
@@ -207,7 +203,9 @@ window.addEventListener('scroll', function () {
 });
 let url = new URL(window.location.href);
 
-if(url.pathname === '/') {
+if (url.pathname === '/') {
     init100vh();
     initVideoBtn();
+} else if (url.pathname === '/Maje/faq.html' || url.pathname === '/faq.html') {
+    initFaq();
 }
