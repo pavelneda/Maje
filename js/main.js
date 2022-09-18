@@ -203,7 +203,7 @@ window.addEventListener('scroll', function () {
 });
 let url = new URL(window.location.href);
 
-if (url.pathname === '/') {
+if (url.pathname === '/' || url.pathname === '/Maje/') {
     init100vh();
     initVideoBtn();
 } else if (url.pathname === '/Maje/faq.html' || url.pathname === '/faq.html') {
