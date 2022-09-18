@@ -73,7 +73,7 @@ const mainFaqCategory = document.querySelector('#main__faq-category');
 const mainFaqQuesion = document.querySelector('#main__faq-quesion');
 const quesionsWrapper = document.querySelector('.help__quesions');
 
-if (new URL(window.location.href).pathname === '/faq.html') {
+if (new URL(window.location.href).pathname === '/Maje/faq.html') {
     const selectCategory = helpAnswers.querySelector('select');
     const quesionsData = JSON.parse(document.querySelector('[type="application/json"]').textContent);
 
