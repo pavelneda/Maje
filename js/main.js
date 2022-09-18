@@ -120,7 +120,7 @@ if (new URL(window.location.href).pathname === '/Maje/faq.html') {
 
 
 
-    function initQuesions() {
+    /*function initQuesions() {
         const quesions = document.querySelectorAll('.help__quesions-item');
         quesions.forEach(quesion => {
             quesion.addEventListener('click', function () {
@@ -138,7 +138,7 @@ if (new URL(window.location.href).pathname === '/Maje/faq.html') {
                 mainFaqQuesion.classList.toggle('active');
             })
         });
-    }
+    }*/
 
     function chooseCategory(categoryName) {
         mainFaqQuesion.classList.remove('active');
@@ -172,10 +172,10 @@ if (new URL(window.location.href).pathname === '/Maje/faq.html') {
                 </div>`;
                     innerHTML += item;
                 });
-                quesionsWrapper.innerHTML = innerHTML;
+                document.querySelector('.help__quesions').innerHTML = innerHTML;
             }
         });
-        initQuesions();
+        //initQuesions();
         selectCategory.value = categoryName;
         sessionStorage.setItem('category', categoryName);
     }
